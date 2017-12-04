@@ -39,8 +39,7 @@ import org.apache.tomcat.util.res.StringManager;
  */
 public class StoreConfig implements IStoreConfig {
     private static Log log = LogFactory.getLog(StoreConfig.class);
-    protected static final StringManager sm = StringManager
-            .getManager(Constants.Package);
+    protected static final StringManager sm = StringManager.getManager(Constants.Package);
 
     private String serverFilename = "conf/server.xml";
 

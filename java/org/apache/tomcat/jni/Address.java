@@ -63,9 +63,7 @@ public class Address {
      * @return The new apr_sockaddr_t.
      * @throws Exception Operation failed
      */
-    public static native long info(String hostname, int family,
-                                   int port, int flags, long p)
-        throws Exception;
+    public static native long info(String hostname, int family, int port, int flags, long p) throws Exception;
     /**
      * Look up the host name from an apr_sockaddr_t.
      * @param sa The apr_sockaddr_t.

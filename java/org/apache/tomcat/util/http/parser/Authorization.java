@@ -32,13 +32,13 @@ public class Authorization {
     private static final StringManager sm = StringManager.getManager(Authorization.class);
 
     @SuppressWarnings("unused")  // Unused due to buggy client implementations
-    private static final Integer FIELD_TYPE_TOKEN = Integer.valueOf(0);
-    private static final Integer FIELD_TYPE_QUOTED_STRING = Integer.valueOf(1);
+    private static final Integer FIELD_TYPE_TOKEN                  = Integer.valueOf(0);
+    private static final Integer FIELD_TYPE_QUOTED_STRING          = Integer.valueOf(1);
     private static final Integer FIELD_TYPE_TOKEN_OR_QUOTED_STRING = Integer.valueOf(2);
-    private static final Integer FIELD_TYPE_LHEX = Integer.valueOf(3);
-    private static final Integer FIELD_TYPE_QUOTED_TOKEN = Integer.valueOf(4);
+    private static final Integer FIELD_TYPE_LHEX                   = Integer.valueOf(3);
+    private static final Integer FIELD_TYPE_QUOTED_TOKEN           = Integer.valueOf(4);
 
-    private static final Map<String,Integer> fieldTypes = new HashMap<>();
+    private static final Map<String,Integer> fieldTypes            = new HashMap<>();
 
     static {
         // Digest field types.

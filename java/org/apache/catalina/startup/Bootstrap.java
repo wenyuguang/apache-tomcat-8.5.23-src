@@ -304,8 +304,7 @@ public final class Bootstrap {
     /**
      * Load daemon.
      */
-    private void load(String[] arguments)
-        throws Exception {
+    private void load(String[] arguments) throws Exception {
 
         // Call the load() method
         String methodName = "load";
