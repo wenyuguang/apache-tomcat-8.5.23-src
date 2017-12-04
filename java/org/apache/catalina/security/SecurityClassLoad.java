@@ -52,7 +52,11 @@ public final class SecurityClassLoad {
         loadTomcatPackage(loader);
     }
 
-
+    /**
+     * 加载org.apache.catalina.core包类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadCorePackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.core.";
@@ -107,6 +111,11 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载org.apache.catalina.loader包类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadLoaderPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.loader.";
@@ -117,6 +126,11 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载org.apache.catalina.realm包类 类似角色
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadRealmPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.realm.";
@@ -125,6 +139,11 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载org.apache.catalina.servlets包下servlet类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadServletsPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.servlets.";
@@ -137,6 +156,11 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载org.apache.catalina.session包下会话类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadSessionPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.session.";
@@ -149,6 +173,11 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载org.apache.catalina.util包下工具类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadUtilPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.util.";
@@ -157,13 +186,22 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载org.apache.catalina.valves包下类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadValvesPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.valves.";
         loader.loadClass(basePackage + "AbstractAccessLogValve$3");
     }
 
-
+    /**
+     * 加载org.apache.coyote包类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadCoyotePackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.coyote.";
@@ -175,12 +213,22 @@ public final class SecurityClassLoad {
     }
 
 
+    /**
+     * 加载javax.servlet.http包下类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadJavaxPackage(ClassLoader loader)
             throws Exception {
         loader.loadClass("javax.servlet.http.Cookie");
     }
 
 
+    /**
+     * 加载org.apache.catalina.connector包下类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadConnectorPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.catalina.connector.";
@@ -267,6 +315,12 @@ public final class SecurityClassLoad {
              "Response$3");
     }
 
+
+    /**
+     * 加载org.apache.tomcat包下类
+     * @param loader
+     * @throws Exception
+     */
     private static final void loadTomcatPackage(ClassLoader loader)
             throws Exception {
         final String basePackage = "org.apache.tomcat.";

@@ -140,7 +140,9 @@ public final class Bootstrap {
 
     // -------------------------------------------------------- Private Methods
 
-
+    /**
+     * 初始化classloader
+     */
     private void initClassLoaders() {
         try {
             commonLoader = createClassLoader("common", null);
@@ -254,21 +256,35 @@ public final class Bootstrap {
      */
     public void init() throws Exception {
 
+        /**
+         * 初始化classloader
+         */
         initClassLoaders();
 
+        /**
+         * 设置当前线程的classloader
+         */
         Thread.currentThread().setContextClassLoader(catalinaLoader);
 
+        /**
+         *加载 安全管理器  需要对运行的代码的权限进行控制
+         */
         SecurityClassLoad.securityClassLoad(catalinaLoader);
 
         // Load our startup class and call its process() method
         if (log.isDebugEnabled())
             log.debug("Loading startup class");
-        Class<?> startupClass =
-            catalinaLoader.loadClass
-            ("org.apache.catalina.startup.Catalina");
+
+        //由于Bootstrap类和catalina类被发布在不同包里面，Bootstrap对catalina实例的操作必须用反射完成。
+        Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
         Object startupInstance = startupClass.newInstance();
 
         // Set the shared extensions class loader
+        //catalina类实例（即startupClass）由反射生成，它的ClassLoader是catalinaLoader。
+        // 然后反射调用方法setParentClassLoader设置catalina类实例里面的
+        // 变量parentClassLoader为sharedClassLoader，意思是作为容器下webapp
+        // 的webappClassLoader的parent，而不是设置catalina类的
+        // ClassLoader的parent是sharedClassLoader。
         if (log.isDebugEnabled())
             log.debug("Setting startup class properties");
         String methodName = "setParentClassLoader";
@@ -304,8 +320,7 @@ public final class Bootstrap {
             param = new Object[1];
             param[0] = arguments;
         }
-        Method method =
-            catalinaDaemon.getClass().getMethod(methodName, paramTypes);
+        Method method = catalinaDaemon.getClass().getMethod(methodName, paramTypes);
         if (log.isDebugEnabled())
             log.debug("Calling startup class " + method);
         method.invoke(catalinaDaemon, param);
