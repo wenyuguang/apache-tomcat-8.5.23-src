@@ -44,6 +44,9 @@ import org.apache.tomcat.util.http.CookieProcessor;
 import org.apache.tomcat.util.http.parser.HttpParser;
 import org.apache.tomcat.util.res.StringManager;
 
+/**
+ * 采用构建者模式来构建推送请求处理
+ */
 public class ApplicationPushBuilder implements PushBuilder {
 
     private static final StringManager sm = StringManager.getManager(ApplicationPushBuilder.class);

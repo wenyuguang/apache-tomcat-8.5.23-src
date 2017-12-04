@@ -112,8 +112,7 @@ public final class Constants {
      *             not be sent.
      */
     @Deprecated
-    public static final byte[] ACK_BYTES_REASON =
-            ByteChunk.convertToBytes("HTTP/1.1 100 Continue" + CRLF + CRLF);
+    public static final byte[] ACK_BYTES_REASON = ByteChunk.convertToBytes("HTTP/1.1 100 Continue" + CRLF + CRLF);
     public static final byte[] ACK_BYTES = ByteChunk.convertToBytes("HTTP/1.1 100 " + CRLF + CRLF);
     public static final String TRANSFERENCODING = "Transfer-Encoding";
     public static final byte[] _200_BYTES = ByteChunk.convertToBytes("200");

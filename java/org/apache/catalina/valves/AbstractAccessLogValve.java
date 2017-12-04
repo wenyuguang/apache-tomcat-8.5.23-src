@@ -397,8 +397,7 @@ public abstract class AbstractAccessLogValve extends ValveBase implements Access
     /**
      * Thread local date format cache.
      */
-    private static final ThreadLocal<DateFormatCache> localDateCache =
-            new ThreadLocal<DateFormatCache>() {
+    private static final ThreadLocal<DateFormatCache> localDateCache = new ThreadLocal<DateFormatCache>() {
         @Override
         protected DateFormatCache initialValue() {
             return new DateFormatCache(localCacheSize, Locale.getDefault(), globalDateCache);
@@ -410,8 +409,7 @@ public abstract class AbstractAccessLogValve extends ValveBase implements Access
      * The system time when we last updated the Date that this valve
      * uses for log lines.
      */
-    private static final ThreadLocal<Date> localDate =
-            new ThreadLocal<Date>() {
+    private static final ThreadLocal<Date> localDate = new ThreadLocal<Date>() {
         @Override
         protected Date initialValue() {
             return new Date();
@@ -460,8 +458,7 @@ public abstract class AbstractAccessLogValve extends ValveBase implements Access
      * Buffer pool used for log message generation. Pool used to reduce garbage
      * generation.
      */
-    private SynchronizedStack<CharArrayWriter> charArrayWriters =
-            new SynchronizedStack<>();
+    private SynchronizedStack<CharArrayWriter> charArrayWriters = new SynchronizedStack<>();
 
     /**
      * Log message buffers are usually recycled and re-used. To prevent

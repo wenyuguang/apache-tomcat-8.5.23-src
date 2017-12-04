@@ -104,8 +104,7 @@ public final class Bootstrap {
         }
 
         catalinaHomeFile = homeFile;
-        System.setProperty(
-                Globals.CATALINA_HOME_PROP, catalinaHomeFile.getPath());
+        System.setProperty(Globals.CATALINA_HOME_PROP, catalinaHomeFile.getPath());
 
         // Then base
         String base = System.getProperty(Globals.CATALINA_BASE_PROP);
@@ -120,8 +119,7 @@ public final class Bootstrap {
             }
             catalinaBaseFile = baseFile;
         }
-        System.setProperty(
-                Globals.CATALINA_BASE_PROP, catalinaBaseFile.getPath());
+        System.setProperty(Globals.CATALINA_BASE_PROP, catalinaBaseFile.getPath());
     }
 
     // -------------------------------------------------------------- Variables
@@ -133,9 +131,9 @@ public final class Bootstrap {
     private Object catalinaDaemon = null;
 
 
-    ClassLoader commonLoader = null;
-    ClassLoader catalinaLoader = null;
-    ClassLoader sharedLoader = null;
+    ClassLoader commonLoader      = null;
+    ClassLoader catalinaLoader    = null;
+    ClassLoader sharedLoader      = null;
 
 
     // -------------------------------------------------------- Private Methods
@@ -178,8 +176,7 @@ public final class Bootstrap {
             try {
                 @SuppressWarnings("unused")
                 URL url = new URL(repository);
-                repositories.add(
-                        new Repository(repository, RepositoryType.URL));
+                repositories.add(new Repository(repository, RepositoryType.URL));
                 continue;
             } catch (MalformedURLException e) {
                 // Ignore
@@ -267,13 +264,13 @@ public final class Bootstrap {
         Thread.currentThread().setContextClassLoader(catalinaLoader);
 
         /**
-         *加载 安全管理器  需要对运行的代码的权限进行控制
+         *加载 安全管理器  对运行的代码的权限进行控制
          */
         SecurityClassLoad.securityClassLoad(catalinaLoader);
 
         // Load our startup class and call its process() method
         if (log.isDebugEnabled())
-            log.debug("Loading startup class");
+            log.debug("Loading startup class【加载启动类...】");
 
         //由于Bootstrap类和catalina类被发布在不同包里面，Bootstrap对catalina实例的操作必须用反射完成。
         Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");

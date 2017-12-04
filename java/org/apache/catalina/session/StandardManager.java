@@ -76,8 +76,10 @@ public class StandardManager extends ManagerBase {
         }
     }
 
-    private class PrivilegedDoUnload
-        implements PrivilegedExceptionAction<Void> {
+    /**
+     * 卸载
+     */
+    private class PrivilegedDoUnload implements PrivilegedExceptionAction<Void> {
 
         PrivilegedDoUnload() {
             // NOOP

@@ -58,14 +58,12 @@ import org.apache.tomcat.util.res.StringManager;
 public class DefaultInstanceManager implements InstanceManager {
 
     // Used when there are no annotations in a class
-    private static final AnnotationCacheEntry[] ANNOTATIONS_EMPTY
-        = new AnnotationCacheEntry[0];
+    private static final AnnotationCacheEntry[] ANNOTATIONS_EMPTY = new AnnotationCacheEntry[0];
 
     /**
      * The string manager for this package.
      */
-    protected static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+    protected static final StringManager sm = StringManager.getManager(Constants.Package);
 
     private final Context context;
     private final Map<String, Map<String, String>> injectionMap;

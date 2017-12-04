@@ -396,14 +396,17 @@ public class LockOutRealm extends CombinedRealm {
         private long lastFailureTime = 0;
 
         public int getFailures() {
+
             return failures.get();
         }
 
         public void setFailures(int theFailures) {
+
             failures.set(theFailures);
         }
 
         public long getLastFailureTime() {
+
             return lastFailureTime;
         }
 

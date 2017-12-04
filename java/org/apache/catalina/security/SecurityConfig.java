@@ -69,7 +69,8 @@ public final class SecurityConfig{
             access = CatalinaProperties.getProperty("package.access");
         } catch (java.lang.Exception ex){
             if (log.isDebugEnabled()){
-                log.debug("Unable to load properties using CatalinaProperties", ex);
+                log.debug("Unable to load properties using CatalinaProperties" +
+                        "【不能通过CatalinaProperties加载properties配置文件】", ex);
             }
         } finally {
             packageDefinition = definition;
@@ -92,6 +93,7 @@ public final class SecurityConfig{
 
     /**
      * Set the security package.access value.
+     * 设置安全package.access值
      */
     public void setPackageAccess(){
         // If catalina.properties is missing, protect all by default.
@@ -105,6 +107,7 @@ public final class SecurityConfig{
 
     /**
      * Set the security package.definition value.
+     * 设置安全package.definition的值
      */
      public void setPackageDefinition(){
         // If catalina.properties is missing, protect all by default.

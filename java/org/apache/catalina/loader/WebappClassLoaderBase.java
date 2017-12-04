@@ -141,33 +141,35 @@ public abstract class WebappClassLoaderBase extends URLClassLoader
         JVM_THREAD_GROUP_NAMES.add("RMI Runtime");
     }
 
-    protected class PrivilegedFindClassByName
-        implements PrivilegedAction<Class<?>> {
+    protected class PrivilegedFindClassByName implements PrivilegedAction<Class<?>> {
 
         protected final String name;
 
         PrivilegedFindClassByName(String name) {
+
             this.name = name;
         }
 
         @Override
         public Class<?> run() {
+
             return findClassInternal(name);
         }
     }
 
 
-    protected static final class PrivilegedGetClassLoader
-        implements PrivilegedAction<ClassLoader> {
+    protected static final class PrivilegedGetClassLoader implements PrivilegedAction<ClassLoader> {
 
         public final Class<?> clazz;
 
         public PrivilegedGetClassLoader(Class<?> clazz){
+
             this.clazz = clazz;
         }
 
         @Override
         public ClassLoader run() {
+
             return clazz.getClassLoader();
         }
     }
@@ -178,8 +180,7 @@ public abstract class WebappClassLoaderBase extends URLClassLoader
     /**
      * The string manager for this package.
      */
-    protected static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+    protected static final StringManager sm = StringManager.getManager(Constants.Package);
 
 
     // ----------------------------------------------------------- Constructors
@@ -804,8 +805,7 @@ public abstract class WebappClassLoaderBase extends URLClassLoader
                 log.trace("      findClassInternal(" + name + ")");
             try {
                 if (securityManager != null) {
-                    PrivilegedAction<Class<?>> dp =
-                        new PrivilegedFindClassByName(name);
+                    PrivilegedAction<Class<?>> dp = new PrivilegedFindClassByName(name);
                     clazz = AccessController.doPrivileged(dp);
                 } else {
                     clazz = findClassInternal(name);

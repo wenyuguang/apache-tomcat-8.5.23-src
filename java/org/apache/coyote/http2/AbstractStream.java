@@ -35,8 +35,7 @@ abstract class AbstractStream {
     private final Integer identifier;
 
     private volatile AbstractStream parentStream = null;
-    private final Set<Stream> childStreams =
-            Collections.newSetFromMap(new ConcurrentHashMap<Stream,Boolean>());
+    private final Set<Stream> childStreams = Collections.newSetFromMap(new ConcurrentHashMap<Stream,Boolean>());
     private long windowSize = ConnectionSettingsBase.DEFAULT_INITIAL_WINDOW_SIZE;
 
     public Integer getIdentifier() {

@@ -130,6 +130,7 @@ public class DefaultServlet extends HttpServlet {
 
     /**
      * The string manager for this package.
+     * 获取本包下面的字符串管理器
      */
     protected static final StringManager sm = StringManager.getManager(Constants.Package);
 
@@ -139,11 +140,13 @@ public class DefaultServlet extends HttpServlet {
 
     /**
      * Full range marker.
+     * 全范围标记
      */
     protected static final ArrayList<Range> FULL = new ArrayList<>();
 
     /**
      * MIME multipart separation string
+     * MIME分割字符串
      */
     protected static final String mimeSeparation = "CATALINA_MIME_BOUNDARY";
 
@@ -156,6 +159,7 @@ public class DefaultServlet extends HttpServlet {
 
     /**
      * Size of file transfer buffer in bytes.
+     * 文件传输缓存字节大小
      */
     protected static final int BUFFER_SIZE = 4096;
 
@@ -179,21 +183,25 @@ public class DefaultServlet extends HttpServlet {
 
     /**
      * The debugging detail level for this servlet.
+     * 当前servlet调试详情级别
      */
     protected int debug = 0;
 
     /**
      * The input buffer size to use when serving resources.
+     * 服务资源时要使用的输入缓冲区大小
      */
     protected int input = 2048;
 
     /**
      * Should we generate directory listings?
+     * 是否应该生成目录列表
      */
     protected boolean listings = false;
 
     /**
      * Read only flag. By default, it's set to true.
+     * 只读标志。默认为true
      */
     protected boolean readOnly = true;
 
@@ -204,42 +212,50 @@ public class DefaultServlet extends HttpServlet {
 
     /**
      * The output buffer size to use when serving resources.
+     * 服务的压缩格式列表及其优先顺序
      */
     protected int output = 2048;
 
     /**
      * Allow customized directory listing per directory.
+     * 允许每个目录定制目录列表
      */
     protected String localXsltFile = null;
 
     /**
      * Allow customized directory listing per context.
+     * 允许按每个上下文定制目录列表
      */
     protected String contextXsltFile = null;
 
     /**
      * Allow customized directory listing per instance.
+     * 允许按每个实例定制目录列表
      */
     protected String globalXsltFile = null;
 
     /**
      * Allow a readme file to be included.
+     * 允许包含自述文件
      */
     protected String readmeFile = null;
 
     /**
      * The complete set of web application resources
+     * Web应用程序资源的完整集合
      */
     protected transient WebResourceRoot resources = null;
 
     /**
      * File encoding to be used when reading static files. If none is specified
      * the platform default is used.
+     * 读取静态文件时使用的文件编码。如果没有指定，则使用平台默认值
      */
     protected String fileEncoding = null;
 
     /**
      * Minimum size for sendfile usage in bytes.
+     * 发送文件的最小字节
      */
     protected int sendfileSize = 48 * 1024;
 
@@ -2429,8 +2445,10 @@ public class DefaultServlet extends HttpServlet {
 
         /**
          * Validate range.
+         * 验证范围
          *
          * @return true if the range is valid, otherwise false
+         * 验证后为true，否则是false
          */
         public boolean validate() {
             if (end >= length)

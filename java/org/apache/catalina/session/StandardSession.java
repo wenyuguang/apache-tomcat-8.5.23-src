@@ -1873,8 +1873,7 @@ public class StandardSession implements HttpSession, Session, Serializable {
  */
 
 @Deprecated
-final class StandardSessionContext
-        implements javax.servlet.http.HttpSessionContext {
+final class StandardSessionContext implements javax.servlet.http.HttpSessionContext {
 
     private static final List<String> emptyString = Collections.emptyList();
 

@@ -32,11 +32,9 @@ public class SecurityListener implements LifecycleListener {
 
     private static final Log log = LogFactory.getLog(SecurityListener.class);
 
-    private static final StringManager sm =
-        StringManager.getManager(Constants.PACKAGE);
+    private static final StringManager sm = StringManager.getManager(Constants.PACKAGE);
 
-    private static final String UMASK_PROPERTY_NAME =
-        Constants.PACKAGE + ".SecurityListener.UMASK";
+    private static final String UMASK_PROPERTY_NAME = Constants.PACKAGE + ".SecurityListener.UMASK";
 
     private static final String UMASK_FORMAT = "%04o";
 

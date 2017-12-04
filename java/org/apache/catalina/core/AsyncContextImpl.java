@@ -52,12 +52,14 @@ import org.apache.tomcat.util.ExceptionUtils;
 import org.apache.tomcat.util.buf.UDecoder;
 import org.apache.tomcat.util.res.StringManager;
 
+/**
+ * 异步上下文实现类
+ */
 public class AsyncContextImpl implements AsyncContext, AsyncContextCallback {
 
     private static final Log log = LogFactory.getLog(AsyncContextImpl.class);
 
-    protected static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+    protected static final StringManager sm = StringManager.getManager(Constants.Package);
 
     /* When a request uses a sequence of multiple start(); dispatch() with
      * non-container threads it is possible for a previous dispatch() to
@@ -509,6 +511,9 @@ public class AsyncContextImpl implements AsyncContext, AsyncContextCallback {
         }
     }
 
+    /**
+     * 继承至Exception 的debug异常类
+     */
     private static class DebugException extends Exception {
         private static final long serialVersionUID = 1L;
     }
@@ -543,6 +548,9 @@ public class AsyncContextImpl implements AsyncContext, AsyncContextCallback {
     }
 
 
+    /**
+     * 异步执行线程类
+     */
     private static class AsyncRunnable implements Runnable {
 
         private final AsyncDispatcher applicationDispatcher;

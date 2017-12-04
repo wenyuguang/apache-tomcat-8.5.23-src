@@ -82,8 +82,7 @@ public final class SecurityUtil{
     /**
      * The string resources for this package.
      */
-    private static final StringManager sm =
-        StringManager.getManager(Constants.PACKAGE);
+    private static final StringManager sm = StringManager.getManager(Constants.PACKAGE);
 
 
     /**
@@ -95,8 +94,7 @@ public final class SecurityUtil{
      * be called.
      * @throws Exception an execution error occurred
      */
-    public static void doAsPrivilege(final String methodName,
-                                     final Servlet targetObject) throws Exception {
+    public static void doAsPrivilege(final String methodName, final Servlet targetObject) throws Exception {
          doAsPrivilege(methodName, targetObject, null, null, null);
     }
 
@@ -180,9 +178,7 @@ public final class SecurityUtil{
      *  be called.
      * @throws Exception an execution error occurred
      */
-    public static void doAsPrivilege(final String methodName,
-                                     final Filter targetObject)
-        throws Exception {
+    public static void doAsPrivilege(final String methodName, final Filter targetObject) throws Exception {
 
          doAsPrivilege(methodName, targetObject, null, null);
     }
@@ -204,11 +200,9 @@ public final class SecurityUtil{
     public static void doAsPrivilege(final String methodName,
                                      final Filter targetObject,
                                      final Class<?>[] targetType,
-                                     final Object[] targetArguments)
-        throws Exception {
+                                     final Object[] targetArguments) throws Exception {
 
-        doAsPrivilege(
-                methodName, targetObject, targetType, targetArguments, null);
+        doAsPrivilege(methodName, targetObject, targetType, targetArguments, null);
     }
 
     /**
@@ -230,8 +224,7 @@ public final class SecurityUtil{
                                      final Filter targetObject,
                                      final Class<?>[] targetParameterTypes,
                                      final Object[] targetParameterValues,
-                                     Principal principal)
-        throws Exception {
+                                     Principal principal) throws Exception {
 
         Method method = null;
         Method[] methodsCache = classCache.get(Filter.class);
@@ -270,8 +263,7 @@ public final class SecurityUtil{
     private static void execute(final Method method,
                                 final Object targetObject,
                                 final Object[] targetArguments,
-                                Principal principal)
-        throws Exception {
+                                Principal principal) throws Exception {
 
         try{
             Subject subject = null;
@@ -345,8 +337,7 @@ public final class SecurityUtil{
      * @param methodName the method to apply the security restriction
      * @return the method instance, null if not yet created.
      */
-    private static Method findMethod(Method[] methodsCache,
-                                     String methodName){
+    private static Method findMethod(Method[] methodsCache, String methodName){
         if (methodName.equals(INIT_METHOD)){
             return methodsCache[INIT];
         } else if (methodName.equals(DESTROY_METHOD)){
@@ -377,8 +368,7 @@ public final class SecurityUtil{
     private static Method createMethodAndCacheIt(Method[] methodsCache,
                                                  Class<?> targetType,
                                                  String methodName,
-                                                 Class<?>[] parameterTypes)
-            throws Exception {
+                                                 Class<?>[] parameterTypes) throws Exception {
 
         if (methodsCache == null) {
             methodsCache = new Method[4];

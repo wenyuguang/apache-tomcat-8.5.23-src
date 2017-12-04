@@ -62,8 +62,7 @@ import org.apache.tomcat.util.http.Parameters;
  * @author Craig R. McClanahan
  * @author Remy Maucherat
  */
-class ApplicationHttpRequest
-        extends org.apache.catalina.servlet4preview.http.HttpServletRequestWrapper {
+class ApplicationHttpRequest extends org.apache.catalina.servlet4preview.http.HttpServletRequestWrapper {
 
 
     // ------------------------------------------------------- Static Variables
@@ -100,14 +99,11 @@ class ApplicationHttpRequest
      * @param crossContext {@code true} if the wrapped request will be a
      *                     cross-context request, otherwise {@code false}
      */
-    public ApplicationHttpRequest(HttpServletRequest request, Context context,
-                                  boolean crossContext) {
-
+    public ApplicationHttpRequest(HttpServletRequest request, Context context, boolean crossContext) {
         super(request);
         this.context = context;
         this.crossContext = crossContext;
         setRequest(request);
-
     }
 
 
@@ -935,6 +931,7 @@ class ApplicationHttpRequest
     /**
      * Utility class used to expose the special attributes as being available
      * as request attributes.
+     * 属性名计数器
      */
     protected class AttributeNamesEnumerator implements Enumeration<String> {
 

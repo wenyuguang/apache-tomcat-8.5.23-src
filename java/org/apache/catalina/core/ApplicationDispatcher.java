@@ -80,8 +80,7 @@ final class ApplicationDispatcher implements AsyncDispatcher, RequestDispatcher 
     }
 
 
-    protected class PrivilegedForward
-            implements PrivilegedExceptionAction<Void> {
+    protected class PrivilegedForward implements PrivilegedExceptionAction<Void> {
         private final ServletRequest request;
         private final ServletResponse response;
 
@@ -97,8 +96,7 @@ final class ApplicationDispatcher implements AsyncDispatcher, RequestDispatcher 
         }
     }
 
-    protected class PrivilegedInclude implements
-            PrivilegedExceptionAction<Void> {
+    protected class PrivilegedInclude implements PrivilegedExceptionAction<Void> {
         private final ServletRequest request;
         private final ServletResponse response;
 
@@ -114,8 +112,7 @@ final class ApplicationDispatcher implements AsyncDispatcher, RequestDispatcher 
         }
     }
 
-    protected class PrivilegedDispatch implements
-            PrivilegedExceptionAction<Void> {
+    protected class PrivilegedDispatch implements PrivilegedExceptionAction<Void> {
         private final ServletRequest request;
         private final ServletResponse response;
 

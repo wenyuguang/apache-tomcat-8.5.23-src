@@ -37,29 +37,25 @@ public interface AccessLog {
      * Name of request attribute used to override the remote address recorded by
      * the AccessLog.
      */
-    public static final String REMOTE_ADDR_ATTRIBUTE =
-        "org.apache.catalina.AccessLog.RemoteAddr";
+    public static final String REMOTE_ADDR_ATTRIBUTE = "org.apache.catalina.AccessLog.RemoteAddr";
 
     /**
      * Name of request attribute used to override remote host name recorded by
      * the AccessLog.
      */
-    public static final String REMOTE_HOST_ATTRIBUTE =
-        "org.apache.catalina.AccessLog.RemoteHost";
+    public static final String REMOTE_HOST_ATTRIBUTE = "org.apache.catalina.AccessLog.RemoteHost";
 
     /**
      * Name of request attribute used to override the protocol recorded by the
      * AccessLog.
      */
-    public static final String PROTOCOL_ATTRIBUTE =
-        "org.apache.catalina.AccessLog.Protocol";
+    public static final String PROTOCOL_ATTRIBUTE = "org.apache.catalina.AccessLog.Protocol";
 
     /**
      * Name of request attribute used to override the server port recorded by
      * the AccessLog.
      */
-    public static final String SERVER_PORT_ATTRIBUTE =
-        "org.apache.catalina.AccessLog.ServerPort";
+    public static final String SERVER_PORT_ATTRIBUTE = "org.apache.catalina.AccessLog.ServerPort";
 
 
     /**

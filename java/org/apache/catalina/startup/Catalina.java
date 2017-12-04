@@ -123,6 +123,7 @@ public class Catalina {
     // ----------------------------------------------------------- Constructors
 
     public Catalina() {
+        //设置安全保护
         setSecurityProtection();
         ExceptionUtils.preload();
     }
@@ -823,6 +824,8 @@ public class Catalina {
 
     /**
      * Set the security package access/protection.
+     * 设置安全包访问/保护
+     *
      */
     protected void setSecurityProtection() {
         SecurityConfig securityConfig = SecurityConfig.newInstance();

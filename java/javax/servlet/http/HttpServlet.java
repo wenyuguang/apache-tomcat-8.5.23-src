@@ -76,21 +76,19 @@ public abstract class HttpServlet extends GenericServlet {
 
     private static final long serialVersionUID = 1L;
 
-    private static final String METHOD_DELETE = "DELETE";
-    private static final String METHOD_HEAD = "HEAD";
-    private static final String METHOD_GET = "GET";
-    private static final String METHOD_OPTIONS = "OPTIONS";
-    private static final String METHOD_POST = "POST";
-    private static final String METHOD_PUT = "PUT";
-    private static final String METHOD_TRACE = "TRACE";
+    private static final String METHOD_DELETE     = "DELETE";
+    private static final String METHOD_HEAD       = "HEAD";
+    private static final String METHOD_GET        = "GET";
+    private static final String METHOD_OPTIONS    = "OPTIONS";
+    private static final String METHOD_POST       = "POST";
+    private static final String METHOD_PUT        = "PUT";
+    private static final String METHOD_TRACE      = "TRACE";
 
     private static final String HEADER_IFMODSINCE = "If-Modified-Since";
-    private static final String HEADER_LASTMOD = "Last-Modified";
+    private static final String HEADER_LASTMOD    = "Last-Modified";
 
-    private static final String LSTRING_FILE =
-        "javax.servlet.http.LocalStrings";
-    private static final ResourceBundle lStrings =
-        ResourceBundle.getBundle(LSTRING_FILE);
+    private static final String LSTRING_FILE      = "javax.servlet.http.LocalStrings";
+    private static final ResourceBundle lStrings  = ResourceBundle.getBundle(LSTRING_FILE);
 
 
     /**
@@ -166,8 +164,7 @@ public abstract class HttpServlet extends GenericServlet {
      * @see javax.servlet.ServletResponse#setContentType
      */
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-        throws ServletException, IOException
-    {
+        throws ServletException, IOException{
         String protocol = req.getProtocol();
         String msg = lStrings.getString("http.method_get_not_supported");
         if (protocol.endsWith("1.1")) {

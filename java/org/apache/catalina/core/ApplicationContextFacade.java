@@ -54,7 +54,7 @@ import org.apache.tomcat.util.ExceptionUtils;
 /**
  * Facade object which masks the internal <code>ApplicationContext</code>
  * object from the web application.
- *
+ *门面模式
  * @author Remy Maucherat
  */
 public class ApplicationContextFacade implements org.apache.catalina.servlet4preview.ServletContext {
@@ -964,7 +964,9 @@ public class ApplicationContextFacade implements org.apache.catalina.servlet4pre
         throw realException;
     }
 
-
+    /**
+     * 专用的执行方法
+     */
     private static class PrivilegedExecuteMethod implements PrivilegedExceptionAction<Object> {
 
         private final Method method;
