@@ -477,6 +477,9 @@ public final class Bootstrap {
         }
 
         try {
+            //zookeeper监控节点信息
+
+
             String command = "start";
             if (args.length > 0) {
                 command = args[args.length - 1];
