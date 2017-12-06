@@ -62,8 +62,7 @@ public class ServletFileUpload extends FileUpload {
      * @return <code>true</code> if the request is multipart;
      *         <code>false</code> otherwise.
      */
-    public static final boolean isMultipartContent(
-            HttpServletRequest request) {
+    public static final boolean isMultipartContent(HttpServletRequest request) {
         if (!POST_METHOD.equalsIgnoreCase(request.getMethod())) {
             return false;
         }

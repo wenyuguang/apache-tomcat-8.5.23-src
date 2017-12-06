@@ -63,8 +63,7 @@ import org.apache.tomcat.util.res.StringManager;
  *
  * @author Remy Maucherat
  */
-public class NamingResourcesImpl extends LifecycleMBeanBase
-        implements Serializable, NamingResources {
+public class NamingResourcesImpl extends LifecycleMBeanBase implements Serializable, NamingResources {
 
     private static final long serialVersionUID = 1L;
 

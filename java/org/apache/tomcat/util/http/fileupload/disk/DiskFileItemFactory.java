@@ -171,9 +171,7 @@ public class DiskFileItemFactory implements FileItemFactory {
      * @return The newly created file item.
      */
     @Override
-    public FileItem createItem(String fieldName, String contentType,
-            boolean isFormField, String fileName) {
-        return new DiskFileItem(fieldName, contentType,
-                isFormField, fileName, sizeThreshold, repository);
+    public FileItem createItem(String fieldName, String contentType, boolean isFormField, String fileName) {
+        return new DiskFileItem(fieldName, contentType, isFormField, fileName, sizeThreshold, repository);
     }
 }

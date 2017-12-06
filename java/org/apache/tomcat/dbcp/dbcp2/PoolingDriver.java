@@ -54,8 +54,7 @@ public class PoolingDriver implements Driver {
     /**
      * The map of registered pools.
      */
-    protected static final HashMap<String,ObjectPool<? extends Connection>> pools =
-            new HashMap<>();
+    protected static final HashMap<String,ObjectPool<? extends Connection>> pools = new HashMap<>();
 
     /**
      * Controls access to the underlying connection

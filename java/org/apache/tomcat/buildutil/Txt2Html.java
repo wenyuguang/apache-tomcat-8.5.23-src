@@ -44,9 +44,7 @@ import org.apache.tools.ant.types.FileSet;
  *
  * @author Mark Roth
  */
-public class Txt2Html
-    extends Task
-{
+public class Txt2Html extends Task {
 
     /** The directory to contain the resulting files */
     private File todir;
@@ -91,9 +89,7 @@ public class Txt2Html
      *    this task.
      */
     @Override
-    public void execute()
-        throws BuildException
-    {
+    public void execute() throws BuildException {
         int count = 0;
 
         // Step through each file and convert.
@@ -136,9 +132,7 @@ public class Txt2Html
      * @param to The output file
      * @throws IOException Thrown if an error occurs during the conversion
      */
-    private void convert( File from, File to )
-        throws IOException
-    {
+    private void convert( File from, File to ) throws IOException {
         // Open files:
         try (BufferedReader in = new BufferedReader(new InputStreamReader(
                 new FileInputStream(from), SOURCE_ENCODING))) {
@@ -176,7 +170,6 @@ public class Txt2Html
             }
         }
     }
-
 }
 
 

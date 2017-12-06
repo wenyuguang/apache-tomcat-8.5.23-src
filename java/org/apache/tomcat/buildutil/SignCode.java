@@ -63,8 +63,7 @@ public class SignCode extends Task {
 
     static {
         try {
-            SIGNING_SERVICE_URL = new URL(
-                    "https://api-appsec-cws.ws.symantec.com/webtrust/SigningService");
+            SIGNING_SERVICE_URL = new URL("https://api-appsec-cws.ws.symantec.com/webtrust/SigningService");
         } catch (MalformedURLException e) {
             throw new IllegalArgumentException(e);
         }
@@ -175,31 +174,25 @@ public class SignCode extends Task {
         SOAPBody body = populateEnvelope(message, NS);
 
         SOAPElement requestSigning = body.addChildElement("requestSigning", NS);
-        SOAPElement requestSigningRequest =
-                requestSigning.addChildElement("requestSigningRequest", NS);
+        SOAPElement requestSigningRequest = requestSigning.addChildElement("requestSigningRequest", NS);
 
         addCredentials(requestSigningRequest, this.userName, this.password, this.partnerCode);
 
-        SOAPElement applicationName =
-                requestSigningRequest.addChildElement("applicationName", NS);
+        SOAPElement applicationName = requestSigningRequest.addChildElement("applicationName", NS);
         applicationName.addTextNode(this.applicationName);
 
-        SOAPElement applicationVersion =
-                requestSigningRequest.addChildElement("applicationVersion", NS);
+        SOAPElement applicationVersion = requestSigningRequest.addChildElement("applicationVersion", NS);
         applicationVersion.addTextNode(this.applicationVersion);
 
-        SOAPElement signingServiceName =
-                requestSigningRequest.addChildElement("signingServiceName", NS);
+        SOAPElement signingServiceName = requestSigningRequest.addChildElement("signingServiceName", NS);
         signingServiceName.addTextNode(this.signingService);
 
         List<String> fileNames = getFileNames(filesToSign);
 
-        SOAPElement commaDelimitedFileNames =
-                requestSigningRequest.addChildElement("commaDelimitedFileNames", NS);
+        SOAPElement commaDelimitedFileNames = requestSigningRequest.addChildElement("commaDelimitedFileNames", NS);
         commaDelimitedFileNames.addTextNode(StringUtils.join(fileNames));
 
-        SOAPElement application =
-                requestSigningRequest.addChildElement("application", NS);
+        SOAPElement application = requestSigningRequest.addChildElement("application", NS);
         application.addTextNode(getApplicationString(fileNames, filesToSign));
 
         // Send the message
@@ -244,8 +237,7 @@ public class SignCode extends Task {
     }
 
 
-    private void downloadSignedFiles(List<File> filesToSign, String id)
-            throws SOAPException, IOException {
+    private void downloadSignedFiles(List<File> filesToSign, String id) throws SOAPException, IOException {
 
         log("Downloading signed files. The signing set ID is: " + id);
 
@@ -253,17 +245,14 @@ public class SignCode extends Task {
         SOAPBody body = populateEnvelope(message, NS);
 
         SOAPElement getSigningSetDetails = body.addChildElement("getSigningSetDetails", NS);
-        SOAPElement getSigningSetDetailsRequest =
-                getSigningSetDetails.addChildElement("getSigningSetDetailsRequest", NS);
+        SOAPElement getSigningSetDetailsRequest = getSigningSetDetails.addChildElement("getSigningSetDetailsRequest", NS);
 
         addCredentials(getSigningSetDetailsRequest, this.userName, this.password, this.partnerCode);
 
-        SOAPElement signingSetID =
-                getSigningSetDetailsRequest.addChildElement("signingSetID", NS);
+        SOAPElement signingSetID = getSigningSetDetailsRequest.addChildElement("signingSetID", NS);
         signingSetID.addTextNode(id);
 
-        SOAPElement returnApplication =
-                getSigningSetDetailsRequest.addChildElement("returnApplication", NS);
+        SOAPElement returnApplication = getSigningSetDetailsRequest.addChildElement("returnApplication", NS);
         returnApplication.addTextNode("true");
 
         // Send the message
@@ -307,16 +296,17 @@ public class SignCode extends Task {
             throws SOAPException {
         SOAPPart soapPart = message.getSOAPPart();
         SOAPEnvelope envelope = soapPart.getEnvelope();
-        envelope.addNamespaceDeclaration(
-                "soapenv","http://schemas.xmlsoap.org/soap/envelope/");
-        envelope.addNamespaceDeclaration(
-                namespace,"http://api.ws.symantec.com/webtrust/codesigningservice");
+        envelope.addNamespaceDeclaration("soapenv","http://schemas.xmlsoap.org/soap/envelope/");
+        envelope.addNamespaceDeclaration(namespace,"http://api.ws.symantec.com/webtrust/codesigningservice");
         return envelope.getBody();
     }
 
 
-    private static void addCredentials(SOAPElement requestSigningRequest,
-            String user, String pwd, String code) throws SOAPException {
+    private static void addCredentials(
+            SOAPElement requestSigningRequest,
+            String user,
+            String pwd,
+            String code) throws SOAPException {
         SOAPElement authToken = requestSigningRequest.addChildElement("authToken", NS);
         SOAPElement userName = authToken.addChildElement("userName", NS);
         userName.addTextNode(user);

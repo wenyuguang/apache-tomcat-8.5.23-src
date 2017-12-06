@@ -282,52 +282,64 @@ public class Catalina {
         digester.setUseContextClassLoader(true);
 
         // Configure the actions we will be using
-        digester.addObjectCreate("Server",
+        digester.addObjectCreate(
+                "Server",
                 "org.apache.catalina.core.StandardServer",
                 "className");
         digester.addSetProperties("Server");
-        digester.addSetNext("Server",
+        digester.addSetNext(
+                "Server",
                 "setServer",
                 "org.apache.catalina.Server");
 
-        digester.addObjectCreate("Server/GlobalNamingResources",
+        digester.addObjectCreate(
+                "Server/GlobalNamingResources",
                 "org.apache.catalina.deploy.NamingResourcesImpl");
         digester.addSetProperties("Server/GlobalNamingResources");
-        digester.addSetNext("Server/GlobalNamingResources",
+        digester.addSetNext(
+                "Server/GlobalNamingResources",
                 "setGlobalNamingResources",
                 "org.apache.catalina.deploy.NamingResourcesImpl");
 
-        digester.addObjectCreate("Server/Listener",
+        digester.addObjectCreate(
+                "Server/Listener",
                 null, // MUST be specified in the element
                 "className");
         digester.addSetProperties("Server/Listener");
-        digester.addSetNext("Server/Listener",
+        digester.addSetNext(
+                "Server/Listener",
                 "addLifecycleListener",
                 "org.apache.catalina.LifecycleListener");
 
-        digester.addObjectCreate("Server/Service",
+        digester.addObjectCreate(
+                "Server/Service",
                 "org.apache.catalina.core.StandardService",
                 "className");
         digester.addSetProperties("Server/Service");
-        digester.addSetNext("Server/Service",
+        digester.addSetNext(
+                "Server/Service",
                 "addService",
                 "org.apache.catalina.Service");
 
-        digester.addObjectCreate("Server/Service/Listener",
+        digester.addObjectCreate(
+                "Server/Service/Listener",
                 null, // MUST be specified in the element
                 "className");
         digester.addSetProperties("Server/Service/Listener");
-        digester.addSetNext("Server/Service/Listener",
+        digester.addSetNext(
+                "Server/Service/Listener",
                 "addLifecycleListener",
                 "org.apache.catalina.LifecycleListener");
 
         //Executor
-        digester.addObjectCreate("Server/Service/Executor",
+        digester.addObjectCreate(
+                "Server/Service/Executor",
                 "org.apache.catalina.core.StandardThreadExecutor",
                 "className");
         digester.addSetProperties("Server/Service/Executor");
 
-        digester.addSetNext("Server/Service/Executor",
+        digester.addSetNext(
+                "Server/Service/Executor",
                 "addExecutor",
                 "org.apache.catalina.Executor");
 
@@ -469,8 +481,7 @@ public class Catalina {
             Digester digester = createStopDigester();
             File file = configFile();
             try (FileInputStream fis = new FileInputStream(file)) {
-                InputSource is =
-                        new InputSource(file.toURI().toURL().toString());
+                InputSource is = new InputSource(file.toURI().toURL().toString());
                 is.setByteStream(fis);
                 digester.push(this);
                 digester.parse(is);
@@ -521,10 +532,10 @@ public class Catalina {
     public void load() {
 
         long t1 = System.nanoTime();
-
+        //获取操作系统缓存的临时目录
         initDirs();
 
-        // Before digester - it may be needed
+        // Before digester - it may be needed    digester-解析xml
         initNaming();
 
         // Create and execute our Digester
@@ -545,15 +556,11 @@ public class Catalina {
             }
             if (inputStream == null) {
                 try {
-                    inputStream = getClass().getClassLoader()
-                            .getResourceAsStream(getConfigFile());
-                    inputSource = new InputSource
-                            (getClass().getClassLoader()
-                                    .getResource(getConfigFile()).toString());
+                    inputStream = getClass().getClassLoader().getResourceAsStream(getConfigFile());
+                    inputSource = new InputSource(getClass().getClassLoader().getResource(getConfigFile()).toString());
                 } catch (Exception e) {
                     if (log.isDebugEnabled()) {
-                        log.debug(sm.getString("catalina.configFail",
-                                getConfigFile()), e);
+                        log.debug(sm.getString("catalina.configFail", getConfigFile()), e);
                     }
                 }
             }
@@ -562,15 +569,11 @@ public class Catalina {
             // Alternative: don't bother with xml, just create it manually.
             if (inputStream == null) {
                 try {
-                    inputStream = getClass().getClassLoader()
-                            .getResourceAsStream("server-embed.xml");
-                    inputSource = new InputSource
-                            (getClass().getClassLoader()
-                                    .getResource("server-embed.xml").toString());
+                    inputStream = getClass().getClassLoader().getResourceAsStream("server-embed.xml");
+                    inputSource = new InputSource(getClass().getClassLoader().getResource("server-embed.xml").toString());
                 } catch (Exception e) {
                     if (log.isDebugEnabled()) {
-                        log.debug(sm.getString("catalina.configFail",
-                                "server-embed.xml"), e);
+                        log.debug(sm.getString("catalina.configFail","server-embed.xml"), e);
                     }
                 }
             }
@@ -578,11 +581,9 @@ public class Catalina {
 
             if (inputStream == null || inputSource == null) {
                 if (file == null) {
-                    log.warn(sm.getString("catalina.configFail",
-                            getConfigFile() + "] or [server-embed.xml]"));
+                    log.warn(sm.getString("catalina.configFail",getConfigFile() + "] or [server-embed.xml]"));
                 } else {
-                    log.warn(sm.getString("catalina.configFail",
-                            file.getAbsolutePath()));
+                    log.warn(sm.getString("catalina.configFail",file.getAbsolutePath()));
                     if (file.exists() && !file.canRead()) {
                         log.warn("Permissions incorrect, read permission is not allowed on the file.");
                     }
@@ -595,8 +596,7 @@ public class Catalina {
                 digester.push(this);
                 digester.parse(inputSource);
             } catch (SAXParseException spe) {
-                log.warn("Catalina.start using " + getConfigFile() + ": " +
-                        spe.getMessage());
+                log.warn("Catalina.start using " + getConfigFile() + ": " + spe.getMessage());
                 return;
             } catch (Exception e) {
                 log.warn("Catalina.start using " + getConfigFile() + ": ", e);
@@ -777,6 +777,9 @@ public class Catalina {
     }
 
 
+    /**
+     * 获取操作系统缓存的临时目录
+     */
     protected void initDirs() {
         String temp = System.getProperty("java.io.tmpdir");
         if (temp == null || (!(new File(temp)).isDirectory())) {

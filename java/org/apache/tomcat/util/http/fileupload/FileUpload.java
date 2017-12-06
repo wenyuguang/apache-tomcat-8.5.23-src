@@ -30,8 +30,7 @@ package org.apache.tomcat.util.http.fileupload;
  * used to create them; a given part may be in memory, on disk, or somewhere
  * else.</p>
  */
-public class FileUpload
-    extends FileUploadBase {
+public class FileUpload extends FileUploadBase {
 
     // ----------------------------------------------------------- Data members
 

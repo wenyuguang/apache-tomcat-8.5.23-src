@@ -36,8 +36,7 @@ public interface JarScanner {
      *                      WEB-INF/lib
      * @param callback      The handler to process any JARs found
      */
-    public void scan(JarScanType scanType, ServletContext context,
-            JarScannerCallback callback);
+    public void scan(JarScanType scanType, ServletContext context, JarScannerCallback callback);
 
     public JarScanFilter getJarScanFilter();
 

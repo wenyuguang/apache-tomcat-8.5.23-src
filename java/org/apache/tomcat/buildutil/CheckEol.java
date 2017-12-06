@@ -91,8 +91,7 @@ public class CheckEol extends Task {
                     try {
                         check(file, errors, mode);
                     } catch (IOException e) {
-                        throw new BuildException("Could not check file '"
-                                + file.getAbsolutePath() + "'", e);
+                        throw new BuildException("Could not check file '" + file.getAbsolutePath() + "'", e);
                     }
                     count++;
                 }

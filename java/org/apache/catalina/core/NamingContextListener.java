@@ -79,8 +79,7 @@ import org.apache.tomcat.util.res.StringManager;
  *
  * @author Remy Maucherat
  */
-public class NamingContextListener
-    implements LifecycleListener, ContainerListener, PropertyChangeListener {
+public class NamingContextListener implements LifecycleListener, ContainerListener, PropertyChangeListener {
 
     private static final Log log = LogFactory.getLog(NamingContextListener.class);
 

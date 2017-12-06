@@ -45,12 +45,14 @@ public abstract class LifecycleBase implements Lifecycle {
 
     /**
      * The list of registered LifecycleListeners for event notifications.
+     * 事件通知的已注册的生命周期监听器
      */
     private final List<LifecycleListener> lifecycleListeners = new CopyOnWriteArrayList<>();
 
 
     /**
      * The current state of the source component.
+     * 当前资源组件的状态信息 默认为空信息
      */
     private volatile LifecycleState state = LifecycleState.NEW;
 
@@ -103,14 +105,15 @@ public abstract class LifecycleBase implements Lifecycle {
         }
 
         try {
+            //设置生命周期状态为正在初始化
             setStateInternal(LifecycleState.INITIALIZING, null, false);
             initInternal();
+            //设置生命周期状态为初始化完毕
             setStateInternal(LifecycleState.INITIALIZED, null, false);
         } catch (Throwable t) {
             ExceptionUtils.handleThrowable(t);
             setStateInternal(LifecycleState.FAILED, null, false);
-            throw new LifecycleException(
-                    sm.getString("lifecycleBase.initFail",toString()), t);
+            throw new LifecycleException(sm.getString("lifecycleBase.initFail",toString()), t);
         }
     }
 
@@ -264,8 +267,7 @@ public abstract class LifecycleBase implements Lifecycle {
                 stop();
             } catch (LifecycleException e) {
                 // Just log. Still want to destroy.
-                log.warn(sm.getString(
-                        "lifecycleBase.destroyStopFail", toString()), e);
+                log.warn(sm.getString("lifecycleBase.destroyStopFail", toString()), e);
             }
         }
 
@@ -355,8 +357,7 @@ public abstract class LifecycleBase implements Lifecycle {
         setStateInternal(state, data, true);
     }
 
-    private synchronized void setStateInternal(LifecycleState state,
-            Object data, boolean check) throws LifecycleException {
+    private synchronized void setStateInternal(LifecycleState state, Object data, boolean check) throws LifecycleException {
 
         if (log.isDebugEnabled()) {
             log.debug(sm.getString("lifecycleBase.setState", this, state));
@@ -397,8 +398,7 @@ public abstract class LifecycleBase implements Lifecycle {
     }
 
     private void invalidTransition(String type) throws LifecycleException {
-        String msg = sm.getString("lifecycleBase.invalidTransition", type,
-                toString(), state);
+        String msg = sm.getString("lifecycleBase.invalidTransition", type, toString(), state);
         throw new LifecycleException(msg);
     }
 }
