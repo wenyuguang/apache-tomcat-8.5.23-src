@@ -28,9 +28,7 @@ import javax.naming.Reference;
  *
  * @since 2.0
  */
-public class PerUserPoolDataSourceFactory
-    extends InstanceKeyDataSourceFactory
-{
+public class PerUserPoolDataSourceFactory extends InstanceKeyDataSourceFactory{
     private static final String PER_USER_POOL_CLASSNAME =
         PerUserPoolDataSource.class.getName();
 

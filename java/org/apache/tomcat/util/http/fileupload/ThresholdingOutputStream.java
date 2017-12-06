@@ -34,9 +34,7 @@ import java.io.OutputStream;
  * is actually reached, since it triggers when a pending write operation would
  * cause the threshold to be exceeded.
  */
-public abstract class ThresholdingOutputStream
-    extends OutputStream
-{
+public abstract class ThresholdingOutputStream extends OutputStream {
 
     // ----------------------------------------------------------- Data members
 

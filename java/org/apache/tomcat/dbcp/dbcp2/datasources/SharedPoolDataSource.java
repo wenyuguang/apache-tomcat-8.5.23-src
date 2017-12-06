@@ -182,18 +182,15 @@ public class SharedPoolDataSource extends InstanceKeyDataSource {
         config.setMaxTotal(getMaxTotal());
         config.setMaxTotalPerKey(getDefaultMaxTotal());
         config.setMaxWaitMillis(getDefaultMaxWaitMillis());
-        config.setMinEvictableIdleTimeMillis(
-                getDefaultMinEvictableIdleTimeMillis());
+        config.setMinEvictableIdleTimeMillis(getDefaultMinEvictableIdleTimeMillis());
         config.setMinIdlePerKey(getDefaultMinIdle());
         config.setNumTestsPerEvictionRun(getDefaultNumTestsPerEvictionRun());
-        config.setSoftMinEvictableIdleTimeMillis(
-                getDefaultSoftMinEvictableIdleTimeMillis());
+        config.setSoftMinEvictableIdleTimeMillis(getDefaultSoftMinEvictableIdleTimeMillis());
         config.setTestOnCreate(getDefaultTestOnCreate());
         config.setTestOnBorrow(getDefaultTestOnBorrow());
         config.setTestOnReturn(getDefaultTestOnReturn());
         config.setTestWhileIdle(getDefaultTestWhileIdle());
-        config.setTimeBetweenEvictionRunsMillis(
-                getDefaultTimeBetweenEvictionRunsMillis());
+        config.setTimeBetweenEvictionRunsMillis(getDefaultTimeBetweenEvictionRunsMillis());
 
         final KeyedObjectPool<UserPassKey,PooledConnectionAndInfo> tmpPool =
                 new GenericKeyedObjectPool<>(factory, config);
@@ -230,16 +227,13 @@ public class SharedPoolDataSource extends InstanceKeyDataSource {
      */
     private void readObject(final ObjectInputStream in)
         throws IOException, ClassNotFoundException {
-        try
-        {
+        try{
             in.defaultReadObject();
             final SharedPoolDataSource oldDS = (SharedPoolDataSource)
                 new SharedPoolDataSourceFactory()
                     .getObjectInstance(getReference(), null, null, null);
             this.pool = oldDS.pool;
-        }
-        catch (final NamingException e)
-        {
+        }catch (final NamingException e){
             throw new IOException("NamingException: " + e);
         }
     }

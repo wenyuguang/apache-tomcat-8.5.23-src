@@ -36,18 +36,15 @@ public final class FastHttpDateFormat {
     // -------------------------------------------------------------- Variables
 
 
-    private static final int CACHE_SIZE =
-        Integer.parseInt(System.getProperty("org.apache.tomcat.util.http.FastHttpDateFormat.CACHE_SIZE", "1000"));
+    private static final int CACHE_SIZE = Integer.parseInt(System.getProperty("org.apache.tomcat.util.http.FastHttpDateFormat.CACHE_SIZE", "1000"));
 
 
     /**
      * The only date format permitted when generating HTTP headers.
      */
-    public static final String RFC1123_DATE =
-            "EEE, dd MMM yyyy HH:mm:ss zzz";
+    public static final String RFC1123_DATE = "EEE, dd MMM yyyy HH:mm:ss zzz";
 
-    private static final SimpleDateFormat format =
-            new SimpleDateFormat(RFC1123_DATE, Locale.US);
+    private static final SimpleDateFormat format = new SimpleDateFormat(RFC1123_DATE, Locale.US);
 
 
     private static final TimeZone gmtZone = TimeZone.getTimeZone("GMT");
@@ -144,8 +141,7 @@ public final class FastHttpDateFormat {
      * @param threadLocalformats Local format to avoid synchronization
      * @return the date as a long
      */
-    public static final long parseDate(String value,
-                                       DateFormat[] threadLocalformats) {
+    public static final long parseDate(String value, DateFormat[] threadLocalformats) {
 
         Long cachedDate = parseCache.get(value);
         if (cachedDate != null) {

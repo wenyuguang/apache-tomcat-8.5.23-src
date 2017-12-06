@@ -46,8 +46,7 @@ public final class LegacyCookieProcessor extends CookieProcessorBase {
 
     private static final UserDataHelper userDataLog = new UserDataHelper(log);
 
-    private static final StringManager sm =
-            StringManager.getManager("org.apache.tomcat.util.http");
+    private static final StringManager sm = StringManager.getManager("org.apache.tomcat.util.http");
 
     private static final char[] V0_SEPARATORS = {',', ';', ' ', '\t'};
     private static final BitSet V0_SEPARATOR_FLAGS = new BitSet(128);
@@ -64,8 +63,7 @@ public final class LegacyCookieProcessor extends CookieProcessorBase {
         }
     }
 
-    private final boolean STRICT_SERVLET_COMPLIANCE =
-            Boolean.getBoolean("org.apache.catalina.STRICT_SERVLET_COMPLIANCE");
+    private final boolean STRICT_SERVLET_COMPLIANCE = Boolean.getBoolean("org.apache.catalina.STRICT_SERVLET_COMPLIANCE");
 
     private boolean allowEqualsInValue = false;
 
@@ -681,8 +679,7 @@ public final class LegacyCookieProcessor extends CookieProcessorBase {
     private boolean isHttpSeparator(final char c) {
         if (c < 0x20 || c >= 0x7f) {
             if (c != 0x09) {
-                throw new IllegalArgumentException(
-                        "Control character in cookie value or attribute.");
+                throw new IllegalArgumentException("Control character in cookie value or attribute.");
             }
         }
 
@@ -697,8 +694,7 @@ public final class LegacyCookieProcessor extends CookieProcessorBase {
     private static boolean isV0Separator(final char c) {
         if (c < 0x20 || c >= 0x7f) {
             if (c != 0x09) {
-                throw new IllegalArgumentException(
-                        "Control character in cookie value or attribute.");
+                throw new IllegalArgumentException("Control character in cookie value or attribute.");
             }
         }
 

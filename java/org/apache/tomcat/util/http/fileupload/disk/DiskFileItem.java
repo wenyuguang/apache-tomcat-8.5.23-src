@@ -56,8 +56,7 @@ import org.apache.tomcat.util.http.fileupload.util.Streams;
  *
  * @since FileUpload 1.1
  */
-public class DiskFileItem
-    implements FileItem {
+public class DiskFileItem implements FileItem {
 
     // ----------------------------------------------------- Manifest constants
 
@@ -74,8 +73,7 @@ public class DiskFileItem
     /**
      * UID used in unique file name generation.
      */
-    private static final String UID =
-            UUID.randomUUID().toString().replace('-', '_');
+    private static final String UID = UUID.randomUUID().toString().replace('-', '_');
 
     /**
      * Counter used in unique identifier generation.
@@ -159,9 +157,14 @@ public class DiskFileItem
      *                      which files will be created, should the item size
      *                      exceed the threshold.
      */
-    public DiskFileItem(String fieldName,
-            String contentType, boolean isFormField, String fileName,
-            int sizeThreshold, File repository) {
+    public DiskFileItem(
+            String fieldName,
+            String contentType,
+            boolean isFormField,
+            String fileName,
+            int sizeThreshold,
+            File repository) {
+
         this.fieldName = fieldName;
         this.contentType = contentType;
         this.isFormField = isFormField;
@@ -182,8 +185,7 @@ public class DiskFileItem
      * @throws IOException if an error occurs.
      */
     @Override
-    public InputStream getInputStream()
-        throws IOException {
+    public InputStream getInputStream() throws IOException {
         if (!isInMemory()) {
             return new FileInputStream(dfos.getFile());
         }
@@ -316,8 +318,7 @@ public class DiskFileItem
      *                                      encoding is not available.
      */
     @Override
-    public String getString(final String charset)
-        throws UnsupportedEncodingException {
+    public String getString(final String charset) throws UnsupportedEncodingException {
         return new String(get(), charset);
     }
 
@@ -405,8 +406,7 @@ public class DiskFileItem
                  * For whatever reason we cannot write the
                  * file to disk.
                  */
-                throw new FileUploadException(
-                    "Cannot write uploaded file to disk!");
+                throw new FileUploadException("Cannot write uploaded file to disk!");
             }
         }
     }
@@ -563,8 +563,7 @@ public class DiskFileItem
                 tempDir = new File(System.getProperty("java.io.tmpdir"));
             }
 
-            String tempFileName =
-                    String.format("upload_%s_%s.tmp", UID, getUniqueId());
+            String tempFileName = String.format("upload_%s_%s.tmp", UID, getUniqueId());
 
             tempFile = new File(tempDir, tempFileName);
         }
