@@ -1675,6 +1675,7 @@ public class Digester extends DefaultHandler2 {
     }
 
     /**
+     * 通过模式和创建对象的类进行调用
      * Add an "object create" rule for the specified parameters.
      *
      * @param pattern Element matching pattern
@@ -1689,6 +1690,7 @@ public class Digester extends DefaultHandler2 {
 
 
     /**
+     * 通过模式和创建对象的类进行调用
      * Add an "object create" rule for the specified parameters.
      *
      * @param pattern Element matching pattern
@@ -1705,6 +1707,7 @@ public class Digester extends DefaultHandler2 {
 
 
     /**
+     * 创建对象之间的关系
      * Add a "set next" rule for the specified parameters.
      *
      * @param pattern Element matching pattern
@@ -1723,6 +1726,7 @@ public class Digester extends DefaultHandler2 {
 
 
     /**
+     * 设置属性
      * Add a "set properties" rule for the specified parameters.
      *
      * @param pattern Element matching pattern

@@ -50,6 +50,11 @@ public final class SecurityClassLoad {
         loadJavaxPackage(loader);
         loadConnectorPackage(loader);
         loadTomcatPackage(loader);
+        /**
+         * 加载自定义zookeeper
+         * org.apache.catalina.zookeeper.Zookeeper
+         */
+        loadZookeeperPackage(loader);
     }
 
     /**
@@ -294,6 +299,22 @@ public final class SecurityClassLoad {
         // security
         loader.loadClass(basePackage + "util.security.PrivilegedGetTccl");
         loader.loadClass(basePackage + "util.security.PrivilegedSetTccl");
+    }
+
+    /**
+     * 加载自定义zookeeper
+     * @param loader
+     * @throws Exception
+     */
+    private static final void loadZookeeperPackage(ClassLoader loader)
+            throws Exception {
+        final String basePackage = "org.apache.catalina.zookeeper.";
+        // buf
+        loader.loadClass(basePackage + "util.buf.B2CConverter");
+        // collections
+        Class<?> clazz = loader.loadClass(basePackage + "Zookeepers");
+        // Ensure StringManager is configured
+        clazz.newInstance();
     }
 }
 

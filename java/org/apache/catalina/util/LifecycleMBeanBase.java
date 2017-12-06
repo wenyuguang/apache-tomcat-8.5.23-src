@@ -35,8 +35,7 @@ public abstract class LifecycleMBeanBase extends LifecycleBase implements JmxEna
 
     private static final Log log = LogFactory.getLog(LifecycleMBeanBase.class);
 
-    private static final StringManager sm =
-        StringManager.getManager("org.apache.catalina.util");
+    private static final StringManager sm = StringManager.getManager("org.apache.catalina.util");
 
 
     /* Cache components of the MBean registration. */

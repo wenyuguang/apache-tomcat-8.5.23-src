@@ -729,8 +729,7 @@ public class Tomcat {
         }
         if (basedir == null) {
             // Create a temp dir.
-            basedir = System.getProperty("user.dir") +
-                "/tomcat." + port;
+            basedir = System.getProperty("user.dir") + "/tomcat." + port;
         }
 
         File baseFile = new File(basedir);
@@ -881,8 +880,7 @@ public class Tomcat {
         System.setProperty("catalina.useNaming", "true");
 
         String value = "org.apache.naming";
-        String oldValue =
-            System.getProperty(javax.naming.Context.URL_PKG_PREFIXES);
+        String oldValue = System.getProperty(javax.naming.Context.URL_PKG_PREFIXES);
         if (oldValue != null) {
             if (oldValue.contains(value)) {
                 value = oldValue;
@@ -927,8 +925,7 @@ public class Tomcat {
         servlet.setOverridable(true);
 
         // JSP servlet (by class name - to avoid loading all deps)
-        servlet = addServlet(
-                ctx, "jsp", "org.apache.jasper.servlet.JspServlet");
+        servlet = addServlet(ctx, "jsp", "org.apache.jasper.servlet.JspServlet");
         servlet.addInitParameter("fork", "false");
         servlet.setLoadOnStartup(3);
         servlet.setOverridable(true);

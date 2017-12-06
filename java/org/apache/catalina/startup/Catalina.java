@@ -410,6 +410,20 @@ public class Catalina {
                 new SetParentClassLoaderRule(parentClassLoader));
         addClusterRuleSet(digester, "Server/Service/Engine/Cluster/");
 
+        //添加zookeeper节点
+        digester.addObjectCreate(
+                "Server/Zookeeper",
+                "org.apache.catalina.zookeeper.ZkInfo",
+                "className");
+        digester.addSetProperties("Server/Zookeeper");
+//        digester.addSetNext(
+//                "Server/Zookeeper",
+//                "setAddress",
+//                "org.apache.catalina.zookeeper.Zookeepers");
+        if (log.isDebugEnabled()) {
+            log.debug("Zookeeper 配置完毕");
+        }
+
         long t2 = System.currentTimeMillis();
         if (log.isDebugEnabled()) {
             log.debug("Digester for server.xml created " + (t2 - t1));

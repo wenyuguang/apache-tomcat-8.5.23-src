@@ -142,8 +142,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
     /**
      * The string manager for this package.
      */
-    private static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+    private static final StringManager sm = StringManager.getManager(Constants.Package);
 
 
     /**
@@ -223,8 +222,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
      * @param globalNamingResources The new global naming resources
      */
     @Override
-    public void setGlobalNamingResources
-        (NamingResourcesImpl globalNamingResources) {
+    public void setGlobalNamingResources (NamingResourcesImpl globalNamingResources) {
 
         NamingResourcesImpl oldGlobalNamingResources =
             this.globalNamingResources;
@@ -440,9 +438,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
             awaitSocket = new ServerSocket(port, 1,
                     InetAddress.getByName(address));
         } catch (IOException e) {
-            log.error("StandardServer.await: create[" + address
-                               + ":" + port
-                               + "]: ", e);
+            log.error("StandardServer.await: create[" + address + ":" + port + "]: ", e);
             return;
         }
 
@@ -473,8 +469,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
                                 Long.valueOf(System.currentTimeMillis() - acceptStartTime)), ste);
                         continue;
                     } catch (AccessControlException ace) {
-                        log.warn("StandardServer.accept security exception: "
-                                + ace.getMessage(), ace);
+                        log.warn("StandardServer.accept security exception: " + ace.getMessage(), ace);
                         continue;
                     } catch (IOException e) {
                         if (stopAwait) {
@@ -524,8 +519,7 @@ public final class StandardServer extends LifecycleMBeanBase implements Server {
                     log.info(sm.getString("standardServer.shutdownViaPort"));
                     break;
                 } else
-                    log.warn("StandardServer.await: Invalid command '"
-                            + command.toString() + "' received");
+                    log.warn("StandardServer.await: Invalid command '" + command.toString() + "' received");
             }
         } finally {
             ServerSocket serverSocket = awaitSocket;

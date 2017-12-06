@@ -107,16 +107,14 @@ public class StandardHost extends ContainerBase implements Host {
      * The Java class name of the default context configuration class
      * for deployed web applications.
      */
-    private String configClass =
-        "org.apache.catalina.startup.ContextConfig";
+    private String configClass = "org.apache.catalina.startup.ContextConfig";
 
 
     /**
      * The Java class name of the default Context implementation class for
      * deployed web applications.
      */
-    private String contextClass =
-        "org.apache.catalina.core.StandardContext";
+    private String contextClass = "org.apache.catalina.core.StandardContext";
 
 
     /**
@@ -143,8 +141,7 @@ public class StandardHost extends ContainerBase implements Host {
      * The Java class name of the default error reporter implementation class
      * for deployed web applications.
      */
-    private String errorReportValveClass =
-        "org.apache.catalina.valves.ErrorReportValve";
+    private String errorReportValveClass = "org.apache.catalina.valves.ErrorReportValve";
 
 
     /**
@@ -169,8 +166,7 @@ public class StandardHost extends ContainerBase implements Host {
      * Track the class loaders for the child web applications so memory leaks
      * can be detected.
      */
-    private final Map<ClassLoader, String> childClassLoaders =
-            new WeakHashMap<>();
+    private final Map<ClassLoader, String> childClassLoaders = new WeakHashMap<>();
 
 
     /**

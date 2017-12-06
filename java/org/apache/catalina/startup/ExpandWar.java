@@ -50,8 +50,7 @@ public class ExpandWar {
     /**
      * The string resources for this package.
      */
-    protected static final StringManager sm =
-        StringManager.getManager(Constants.Package);
+    protected static final StringManager sm = StringManager.getManager(Constants.Package);
 
 
     /**

@@ -139,8 +139,7 @@ public class HostConfig implements LifecycleListener {
     /**
      * Map of deployed applications.
      */
-    protected final Map<String, DeployedApplication> deployed =
-            new ConcurrentHashMap<>();
+    protected final Map<String, DeployedApplication> deployed = new ConcurrentHashMap<>();
 
 
     /**
