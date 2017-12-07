@@ -143,8 +143,7 @@ public abstract class LifecycleMBeanBase extends LifecycleBase implements JmxEna
      *
      * @return  The name used to register the object
      */
-    protected final ObjectName register(Object obj,
-            String objectNameKeyProperties) {
+    protected final ObjectName register(Object obj, String objectNameKeyProperties) {
 
         // Construct an object name with the right domain
         StringBuilder name = new StringBuilder(getDomain());

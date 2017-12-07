@@ -607,13 +607,13 @@ public class Catalina {
             try {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
-                digester.parse(inputSource);
+                Object ob = digester.parse(inputSource);
                 Class<?> cls = Class.forName("org.apache.catalina.zookeeper.ZkInfo");
                 Object obj = cls.newInstance();
                 if(obj instanceof ZkInfo){
-                    System.out.print("ashdshdkj\u6492\u5373\u53ef\u7684\u6492\u5a07\u7684\u5ba2\u6237");
+                    System.out.println("ashdshdkj\u6492\u5373\u53ef\u7684\u6492\u5a07\u7684\u5ba2\u6237");
                 }
-                System.out.print(cls.toString());
+                System.out.println(cls.toString());
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " + spe.getMessage());
                 return;
