@@ -35,6 +35,7 @@ import org.apache.catalina.LifecycleException;
 import org.apache.catalina.LifecycleState;
 import org.apache.catalina.Server;
 import org.apache.catalina.security.SecurityConfig;
+import org.apache.catalina.zookeeper.ZkInfo;
 import org.apache.juli.ClassLoaderLogManager;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
@@ -445,11 +446,9 @@ public class Catalina {
             digester.addRuleSet(ruleSet);
         } catch (Exception e) {
             if (log.isDebugEnabled()) {
-                log.debug(sm.getString("catalina.noCluster",
-                        e.getClass().getName() + ": " + e.getMessage()), e);
+                log.debug(sm.getString("catalina.noCluster", e.getClass().getName() + ": " + e.getMessage()), e);
             } else if (log.isInfoEnabled()) {
-                log.info(sm.getString("catalina.noCluster",
-                        e.getClass().getName() + ": " + e.getMessage()));
+                log.info(sm.getString("catalina.noCluster", e.getClass().getName() + ": " + e.getMessage()));
             }
         }
     }
@@ -609,6 +608,12 @@ public class Catalina {
                 inputSource.setByteStream(inputStream);
                 digester.push(this);
                 digester.parse(inputSource);
+                Class<?> cls = Class.forName("org.apache.catalina.zookeeper.ZkInfo");
+                Object obj = cls.newInstance();
+                if(obj instanceof ZkInfo){
+                    System.out.print("ashdshdkj\u6492\u5373\u53ef\u7684\u6492\u5a07\u7684\u5ba2\u6237");
+                }
+                System.out.print(cls.toString());
             } catch (SAXParseException spe) {
                 log.warn("Catalina.start using " + getConfigFile() + ": " + spe.getMessage());
                 return;
@@ -638,7 +643,7 @@ public class Catalina {
             getServer().init();
         } catch (LifecycleException e) {
             if (Boolean.getBoolean("org.apache.catalina.startup.EXIT_ON_INIT_FAILURE")) {
-                throw new java.lang.Error(e);
+                throw new Error(e);
             } else {
                 log.error("Catalina.start", e);
             }
