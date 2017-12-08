@@ -302,6 +302,20 @@ public class Catalina {
                 "setGlobalNamingResources",
                 "org.apache.catalina.deploy.NamingResourcesImpl");
 
+        //添加zookeeper节点
+        digester.addObjectCreate(
+                "Server/Zookeeper",
+                "org.apache.catalina.zookeeper.ZkInfo",
+                "className");
+        digester.addSetProperties("Server/Zookeeper");
+//        digester.addSetNext(
+//                "Server/Zookeeper",
+//                "setAddress",
+//                "org.apache.catalina.zookeeper.Zookeepers");
+        log.info("Zookeeper 配置完毕");
+
+
+
         digester.addObjectCreate(
                 "Server/Listener",
                 null, // MUST be specified in the element
@@ -405,25 +419,13 @@ public class Catalina {
         digester.addRuleSet(new ContextRuleSet("Server/Service/Engine/Host/"));
         addClusterRuleSet(digester, "Server/Service/Engine/Host/Cluster/");
         digester.addRuleSet(new NamingRuleSet("Server/Service/Engine/Host/Context/"));
+        //zookeeper
+        digester.addRuleSet(new NamingRuleSet("Server/Zookeeper/"));
 
         // When the 'engine' is found, set the parentClassLoader.
         digester.addRule("Server/Service/Engine",
                 new SetParentClassLoaderRule(parentClassLoader));
         addClusterRuleSet(digester, "Server/Service/Engine/Cluster/");
-
-        //添加zookeeper节点
-        digester.addObjectCreate(
-                "Server/Zookeeper",
-                "org.apache.catalina.zookeeper.ZkInfo",
-                "className");
-        digester.addSetProperties("Server/Zookeeper");
-//        digester.addSetNext(
-//                "Server/Zookeeper",
-//                "setAddress",
-//                "org.apache.catalina.zookeeper.Zookeepers");
-        if (log.isDebugEnabled()) {
-            log.debug("Zookeeper 配置完毕");
-        }
 
         long t2 = System.currentTimeMillis();
         if (log.isDebugEnabled()) {
