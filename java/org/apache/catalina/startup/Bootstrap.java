@@ -271,6 +271,7 @@ public final class Bootstrap {
         // Load our startup class and call its process() method
         if (log.isDebugEnabled())
             log.debug("Loading startup class【加载启动类...】");
+        log.info("Loading startup class【加载启动类...】");
 
         //由于Bootstrap类和catalina类被发布在不同包里面，Bootstrap对catalina实例的操作必须用反射完成。
         Class<?> startupClass = catalinaLoader.loadClass("org.apache.catalina.startup.Catalina");
